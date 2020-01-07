@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.personBox{
+  background-color: rgb(173, 199, 143);
+  padding: 10px; 
+  margin: 5px;
+  border: 2px solid rgb(3, 37, 0);
+}
+
+.red{
+  color: red;
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.btn01{
+  padding:          5px;
+  border:           2px solid #CCC;
+  color:            brown;
+  background-color: white
+}
+.btn01:hover{
+  color:            white;
+  background-color: brown;
+}
+
+.btn02{
+  padding:          5px;
+  border:           2px solid #CCC;
+  color:            rgb(2, 76, 82);
+  background-color: rgb(142, 169, 185);
+}
+.btn02:hover{
+  color:            white;
+  background-color: rgb(2, 76, 82);
+}

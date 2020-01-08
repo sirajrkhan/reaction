@@ -43,7 +43,7 @@ class App extends Component {
     let persons_flag = null;
     const cockpit = {
       heading: "Refactoring",
-      buttonText: "Toggle Button"
+      buttonText: "Toggle the Button"
     }
 
     if (this.state.showPersons) {
@@ -61,7 +61,8 @@ class App extends Component {
     return (
       <div className="App">
         <Cockpit
-          heading={cockpit.heading}
+          heading={cockpit.heading} 
+          personVisible={this.state.showPersons}
           clicked={this.toggleHandler}>
           {cockpit.buttonText}
         </Cockpit>

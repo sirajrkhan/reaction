@@ -42,7 +42,6 @@ class App extends Component {
   render() {
     let persons_flag = null;
     const cockpit = {
-      heading: "Refactoring!",
       buttonText: "Toggle the Button"
     }
 
@@ -61,7 +60,7 @@ class App extends Component {
     return (
       <div className="App">
         <Cockpit
-          heading={cockpit.heading}
+          heading={this.props.AppTitle}
           personVisible={this.state.showPersons}
           clicked={this.toggleHandler}>
           {cockpit.buttonText}

@@ -4,13 +4,32 @@ import Cockpit from '../components/Cockpit/Cockpit'
 import './App.css'
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    console.log('App.js -- constructor');
+  }
+
   state = {
     persons: [
       { id: 'sdf32', name: 'Siraj', age: 99 },
       { id: 'adfd3', name: 'Habeeb', age: 13 },
       { id: 'fdas7', name: 'Noah', age: 5 },
     ],
-    showPersons: true,
+    showPersons: false,
+  }
+
+  static getDerivedStateFromProps(props,state){
+    console.log('getDerivedStateFromProps', props)
+    return state;
+  }
+
+  UNSAFE_componentWillMount(){
+    console.log('componentWillMount')
+  }
+
+  componentDidMount(){
+    console.log('componentDidMount')
   }
 
   nameChangedHandler = (event, id) => {
@@ -40,6 +59,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('App.js - Render starts')
     let persons_flag = null;
     const cockpit = {
       buttonText: "Toggle the Button"

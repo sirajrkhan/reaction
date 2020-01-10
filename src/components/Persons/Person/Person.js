@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const person = (props) => {
-    return (
-        <div className={props.styled}>
-            <p onClick={props.click}>I am {props.name} ... and I am {props.age}</p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.changed} value={props.name} />
-        </div>
-    )
+class Person extends Component {
+    render(){
+        console.log('well.. this seems to be Person Comp...')
+        return (
+            <div className={this.props.styled}>
+                <p onClick={this.props.click}>Name is... {this.props.name} ... and I am {this.props.age}</p>
+                <p>{this.props.children}</p>
+                <input type="text" onChange={this.props.changed} value={this.props.name} />
+            </div>
+        )
+    }
 }
 
-export default person
+export default Person

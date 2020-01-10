@@ -1,7 +1,12 @@
-import React from 'react'
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useEffect } from 'react'
 import cockpitCSS from './Cockpit.module.css'
 
 const cockpit = (props) => {
+useEffect( () => {
+    console.log('Cockpit -- useEffect - only on toggle')
+},[props.personVisible]);
+
     let btnClass = [cockpitCSS.btn01];
     if (props.personVisible) {
         btnClass.push(cockpitCSS.btn02) 

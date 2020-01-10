@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
+import withClass from '../components/hoc/withClass'
+import Aux from '../components/hoc/Aux'
 import './App.css'
 
 class App extends Component {
@@ -78,7 +80,7 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
+      <Aux>
         <Cockpit
           heading={this.props.AppTitle}
           personVisible={this.state.showPersons}
@@ -86,8 +88,8 @@ class App extends Component {
           {cockpit.buttonText}
         </Cockpit>
         {persons_flag}
-      </div>
+      </Aux>
     )
   }
 }
-export default App;
+export default withClass(App,'App');

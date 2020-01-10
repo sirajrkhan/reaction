@@ -4,7 +4,7 @@ import cockpitCSS from './Cockpit.module.css'
 
 const cockpit = (props) => {
 useEffect( () => {
-    console.log('Cockpit -- useEffect - only on toggle')
+    // console.log('Cockpit -- useEffect - only on toggle')
 },[props.personVisible]);
 
     let btnClass = [cockpitCSS.btn01];

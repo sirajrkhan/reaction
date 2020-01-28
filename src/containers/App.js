@@ -3,6 +3,7 @@ import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 import withClass from '../components/hoc/withClass'
 import Aux from '../components/hoc/Aux'
+import AuthContext from '../context/auth-context'
 import './App.css'
 
 class App extends Component {
@@ -19,6 +20,8 @@ class App extends Component {
       { id: 'fdas7', name: 'Noah', age: 5 },
     ],
     showPersons: false,
+    changeCounter: 0,
+    authenticated: false
   }
 
   static getDerivedStateFromProps(props,state){
@@ -34,6 +37,10 @@ class App extends Component {
     console.log('componentDidMount')
   }
 
+  loginHandler = () => {
+    this.setState({authenticated:true})
+  }
+
   nameChangedHandler = (event, id) => {
     // console.log(`Event: ${event.target.value} ID: ${id}`)
     const personIndex = this.state.persons.findIndex(p => {
@@ -46,8 +53,12 @@ class App extends Component {
     const new_persons = [...this.state.persons]
     new_persons[personIndex] = new_person;
 
-    this.setState(
-      { persons: new_persons })
+    this.setState( (prevState,props) => {
+        return {
+        persons: new_persons,
+        changeCounter: prevState.changeCounter + 5
+      }
+    })
   }
 
   toggleHandler = () => {
@@ -74,6 +85,7 @@ class App extends Component {
             persons={this.state.persons}
             clicked={this.personDeleteHandler}
             changed={this.nameChangedHandler}
+            isAuthenticated={this.state.authenticated}
           />
         </div>
       );
@@ -81,13 +93,19 @@ class App extends Component {
 
     return (
       <Aux>
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.loginHandler
+          }}>
         <Cockpit
           heading={this.props.AppTitle}
           personVisible={this.state.showPersons}
-          clicked={this.toggleHandler}>
-          {cockpit.buttonText}
-        </Cockpit>
+          clicked={this.toggleHandler}
+          children={cockpit.buttonText}
+          />
         {persons_flag}
+        </AuthContext.Provider>
       </Aux>
     )
   }
